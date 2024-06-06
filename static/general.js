@@ -31,6 +31,7 @@ $(document).ready(function(){
 
         function checkit() {
             var checkedVal = $('input[name=type]:checked').val();
+            var checkedId = $('input[name=type]:checked').attr("id");
             if (checkedVal === undefined) {
                 // hide the fields
                 $('.fieldFront').hide();
@@ -38,12 +39,11 @@ $(document).ready(function(){
                 $('.saveButton').hide();
             } else {
                 $('.toggleButton').removeClass('toggleSelected');
-                $(this).addClass('toggleSelected');
-
-                if (checkedVal == '1') {
-                    $('textarea[name=back]').attr('rows', 5);
+            
+                if(checkedId === undefined) {
+                    $(this).addClass('toggleSelected');
                 } else {
-                    $('textarea[name=back]').attr('rows', 12);
+                    $('label[for='+ checkedId +']').addClass('toggleSelected');
                 }
 
                 $('.fieldFront').show();
